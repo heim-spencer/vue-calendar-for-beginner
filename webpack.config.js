@@ -1,7 +1,6 @@
 const path = require('path');
 const Sass = require('sass');
-const Fiber = require('fibers');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const mode = process.env.NODE_ENV;
 const isProduction = mode === 'production';
@@ -20,7 +19,9 @@ module.exports = {
     filename: '[name]',
   },
   devServer: {
-    contentBase: './public',
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
     historyApiFallback: true,
     port: '8080',
   },
@@ -65,9 +66,6 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               implementation: Sass,
-              sassOptions: {
-                fiber: Fiber,
-              },
             },
           },
         ],
@@ -77,7 +75,7 @@ module.exports = {
   plugins: [new VueLoaderPlugin()],
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm-browser.js',
       '~': path.resolve(__dirname, 'src'),
     },
   },

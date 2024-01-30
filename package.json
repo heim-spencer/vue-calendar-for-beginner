@@ -25,13 +25,12 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^6.2.2",
-    "fibers": "^5.0.3",
     "husky": "^4.2.5",
     "lint-staged": "^15.2.0",
     "node-sass": "^9.0.0",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^8.0.0",
-    "prettier": "^3.2.4",
+    "prettier": "^2.0.5",
     "prettier-eslint": "^16.3.0",
     "sass": "^1.70.0",
     "sass-loader": "^14.0.0",
@@ -60,8 +59,8 @@
     "url": "https://github.com/daisuke-tanabe/vue-calendar.git"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack",
-    "dev": "webpack-dev-server",
+    "build": "NODE_ENV=production webpack --mode production",
+    "dev": "webpack-dev-server --mode development",
     "lint": "run-s lint:*",
     "lint:script": "eslint './src/**/*.{js,vue}' --fix",
     "lint:style": "stylelint './src/**/*.{scss,vue}' --fix"
